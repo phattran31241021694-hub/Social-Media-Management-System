@@ -32,7 +32,14 @@ namespace WinForm2
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {   
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 220, 220);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 220, 220);
+
+            dataGridView1.GridColor = Color.LightGray;
             posts = SamplePostGenerator.Generate(2024);
             posts.LastPostNumber();
             MessageBox.Show($"Trang hiện có {posts.Count()} bài đăng");
