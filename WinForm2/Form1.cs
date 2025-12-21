@@ -185,5 +185,6 @@ namespace WinForm2
             Form2 f = new Form2(posts);
             f.Show();
         }
+
     }
 }

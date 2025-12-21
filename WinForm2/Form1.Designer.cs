@@ -154,9 +154,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(21, 479);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 20);
+            this.label1.Size = new System.Drawing.Size(66, 20);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Fromdate:";
+            this.label1.Text = "ToDate:";
             // 
             // dateTimePickerToDate
             // 
