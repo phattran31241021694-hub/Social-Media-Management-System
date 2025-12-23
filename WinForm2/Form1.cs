@@ -58,14 +58,14 @@ namespace WinForm2
                 MessageBox.Show("Không được bỏ trống thông tin");
                 return;
             }
-            Stopwatch sw = Stopwatch.StartNew();
-            string postid = posts.GeneratePostId();
-            Post p = new Post(textBoxID.Text, textBoxContent.Text, postid, dateTimePickerDate.Value);
-            posts.AddLast(p);
-            sw.Stop();
-            TimeLog log = new TimeLog("Thêm dữ liệu", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
-            MessageBox.Show($"Đã thêm thành công postid: {postid}");
+            string postid = "";
+            RunMultipleTimes(() =>
+            {
+                string postid_1 = posts.GeneratePostId();
+                Post p_1 = new Post(textBoxID.Text, textBoxContent.Text, postid_1, dateTimePickerDate.Value);
+                posts.AddLast(p_1);
+            }, "Thêm dữ liệu");
+            MessageBox.Show($"Đã thêm thành công postid: {postid}"); ;
             ClearAllTextBoxes(this);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = posts.ToList();
@@ -76,9 +76,7 @@ namespace WinForm2
         {
             string id = textBoxID.Text.Trim();
             string idpost = textBoxIDpost.Text.Trim();
-            Stopwatch sw = Stopwatch.StartNew();
             Node idNode = posts.FindPostId(idpost);
-            sw.Stop();
             if (idNode == null)
             {
                 MessageBox.Show("Không tìm thấy PostID");
@@ -89,12 +87,12 @@ namespace WinForm2
                 MessageBox.Show("PostID không thuộc đúng Id");
                 return;
             }
-            sw.Start();
-            idNode.Data.Content = textBoxContent.Text;
-            idNode.Data.Date = dateTimePickerDate.Value;
-            sw.Stop();
-            TimeLog log = new TimeLog("Sửa dữ liệu", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
+            RunMultipleTimes(() =>
+            {
+                Node idPost_1 = posts.FindPostId(idpost);
+                idNode.Data.Content = textBoxContent.Text;
+                idNode.Data.Date = dateTimePickerDate.Value;
+            }, "Sửa dữ liệu");
             MessageBox.Show($"Đã sửa dữ liệu thành công cho post {idpost}");
             ClearAllTextBoxes(this);
             dataGridView1.DataSource = null;
@@ -105,11 +103,10 @@ namespace WinForm2
         {
             dataGridView1.DataSource = null;
             List<Post> SortLikes = new List<Post>();
-            Stopwatch sw = Stopwatch.StartNew();
-            SortLikes = posts.SortLike().ToList();
-            sw.Stop();
-            TimeLog log = new TimeLog("Lọc theo lượt thích", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
+            RunMultipleTimes(() =>
+            {
+                SortLikes = posts.SortLike().ToList();
+            }, "Lọc theo lượt thích");
             dataGridView1.DataSource = SortLikes;
         }
 
@@ -126,22 +123,22 @@ namespace WinForm2
             {
                 if (string.IsNullOrWhiteSpace(idpost))
                 {
-                    Stopwatch sw = Stopwatch.StartNew();
                     SingleLinkedList search = posts.FindID(id);
-                    sw.Stop();
-                    TimeLog log = new TimeLog("Tìm kiếm theo ID", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-                    timehistory.AddLog(log);
+                    RunMultipleTimes(() =>
+                    {
+                        SingleLinkedList search_1 = posts.FindID(id);
+                    }, "Tìm kiếm theo ID");
                     MessageBox.Show($"Đã tìm thấy {search.Count()} bài đăng phù hợp");
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = search.ToList();
                 }   
                 else
                 {
-                    Stopwatch sw = Stopwatch.StartNew();
                     Node node = posts.FindPostId(idpost);
-                    sw.Stop();
-                    TimeLog log = new TimeLog("Tìm kiếm theo postID", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-                    timehistory.AddLog(log);
+                    RunMultipleTimes(() =>
+                    {
+                        Node node_1 = posts.FindPostId(idpost);
+                    }, "Tìm kiếm theo postID");
                     if (node == null)
                     {
                         MessageBox.Show("Không tìm thấy PostID");
@@ -167,11 +164,11 @@ namespace WinForm2
         private void CtSearch_Click(object sender, EventArgs e)
         {
             string k = textBoxContent.Text;
-            Stopwatch sw=Stopwatch.StartNew();
+            RunMultipleTimes(() =>
+            {
+                SingleLinkedList ksearch_1 = posts.FilterByKeyWordSort(k);
+            }, "Tra cứu theo từ khóa");
             SingleLinkedList ksearch= posts.FilterByKeyWordSort(k);
-            sw.Stop();
-            TimeLog log = new TimeLog("Tra cứu theo từ khóa", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
             MessageBox.Show($"Đã tìm thấy {ksearch.Count()} bài đăng có nội dung phù hợp");
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = ksearch.ToList();
@@ -179,11 +176,11 @@ namespace WinForm2
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            Stopwatch sw = Stopwatch.StartNew();
+            RunMultipleTimes(() =>
+            {
+                SingleLinkedList filter_1 = posts.FilterByDateTimeRange(dateTimePickerFromDate.Value, dateTimePickerToDate.Value);
+            }, "Lọc giữa 2 khoảng thời gian");
             SingleLinkedList filter = posts.FilterByDateTimeRange(dateTimePickerFromDate.Value, dateTimePickerToDate.Value);
-            sw.Stop();
-            TimeLog log = new TimeLog("Lọc giữa 2 khoảng thời gian", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
             MessageBox.Show($"Hiện có {filter.Count()} bài đăng");
             dataGridView1.DataSource = null;
             dataGridView1.DataSource =filter.ToList();
@@ -195,11 +192,11 @@ namespace WinForm2
             string id = textBoxID.Text.Trim();
             string idpost = textBoxIDpost.Text.Trim();
             Node idNode = posts.FindPostId(idpost);
-            Stopwatch sw = Stopwatch.StartNew();
-            bool del = posts.RemoveByPostId(idpost);
-            sw.Stop();
-            TimeLog log = new TimeLog("Xóa dữ liệu", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
+            bool del=false;
+            RunMultipleTimes(() =>
+            {
+                del = posts.RemoveByPostId(idpost);
+            }, "Xóa dữ liệu");
             if (idpost == null)
             {
                 MessageBox.Show("Vui lòng điền IDPost để xóa");
@@ -224,11 +221,10 @@ namespace WinForm2
         {
             dataGridView1.DataSource = null;
             List<Post> SortDates = new List<Post>();
-            Stopwatch sw = Stopwatch.StartNew();
-            SortDates =posts.SortDate().ToList();
-            sw.Stop();
-            TimeLog log = new TimeLog("Lọc theo ngày", sw.Elapsed.TotalMilliseconds, timehistory.GenerateDataId());
-            timehistory.AddLog(log);
+            RunMultipleTimes(() =>
+            {
+                SortDates = posts.SortDate().ToList();
+            }, "Lọc theo ngày");
             dataGridView1.DataSource = SortDates;
         }
 
@@ -275,7 +271,7 @@ namespace WinForm2
 
         private void ranking_Click(object sender, EventArgs e)
         {
-            DrawChart(posts.MonthStatistic(2024));
+            time_manage.Visible = false;
             menu_panel.Visible = false;
             ranking_panel.Visible = true;
         }
@@ -306,7 +302,10 @@ namespace WinForm2
         {
             if (int.TryParse(textBox_Yearinp.Text, out int year))
             {
-                DrawChart(posts.MonthStatistic(year));
+                DrawChart(posts.MonthStatistic(2024));
+                time_manage.Visible = false;
+                menu_panel.Visible = false;
+                ranking_panel.Visible = true;
             }
             else
             {
@@ -370,6 +369,12 @@ namespace WinForm2
             ranking_panel.Visible = false;
             DrawPerformanceComparison();
             averageTime.DataSource = null;
+            averageTime.DefaultCellStyle.ForeColor = Color.Black;
+            averageTime.EnableHeadersVisualStyles = false;
+            averageTime.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 220, 220);
+            averageTime.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            averageTime.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 220, 220);
+            averageTime.GridColor = Color.LightGray;
             averageTime.DataSource = timehistory.GroupByAlgorithm().ToList();
             time_manage.Visible = true;
             time_manage.BringToFront();
@@ -383,6 +388,25 @@ namespace WinForm2
         private void escape_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void RunMultipleTimes(Action action, string algorithmName)
+        {
+            int times = (int)time_ex.Value;
+
+            for (int i = 0; i < times; i++)
+            {
+                Stopwatch sw = Stopwatch.StartNew();
+                action();
+                sw.Stop();
+
+                timehistory.AddLog(
+                    new TimeLog(algorithmName, sw.Elapsed.TotalMilliseconds,timehistory.GenerateDataId())
+                );
+            }
+        }
+        private void ranking_panel_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

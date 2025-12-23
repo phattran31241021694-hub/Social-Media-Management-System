@@ -90,7 +90,15 @@ namespace WinForm2
 
                 cur = cur.Next;
             }
-
+            TimeLogNode calcNode = result.Head;
+            while (calcNode != null)
+            {
+                if (calcNode.Data.Count > 0)
+                {
+                    calcNode.Data.ExecutionTimeMs = calcNode.Data.ExecutionTimeMs / calcNode.Data.Count;
+                }
+                calcNode = calcNode.Next;
+            }
             return result;
         }
         public List<TimeLog> ToList()

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.PictureBox();
@@ -75,6 +75,9 @@
             this.averageTime = new System.Windows.Forms.DataGridView();
             this.time_collection = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.escape = new System.Windows.Forms.Button();
+            this.time_ex = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Menu)).BeginInit();
             this.function.SuspendLayout();
@@ -85,6 +88,7 @@
             this.time_manage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.averageTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.time_collection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.time_ex)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -97,7 +101,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1800, 111);
             this.panel1.TabIndex = 36;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
             // 
@@ -204,10 +207,10 @@
             this.menu_panel.Controls.Add(this.Date);
             this.menu_panel.Controls.Add(this.IDpost);
             this.menu_panel.Controls.Add(this.ID);
-            this.menu_panel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menu_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menu_panel.Location = new System.Drawing.Point(60, 111);
             this.menu_panel.Name = "menu_panel";
-            this.menu_panel.Size = new System.Drawing.Size(1800, 709);
+            this.menu_panel.Size = new System.Drawing.Size(1740, 709);
             this.menu_panel.TabIndex = 0;
             // 
             // Refresh_1
@@ -436,14 +439,14 @@
             this.ranking_panel.Controls.Add(this.textBox_Yearinp);
             this.ranking_panel.Controls.Add(this.enter_Click);
             this.ranking_panel.Controls.Add(this.ranking_chart);
-            this.ranking_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ranking_panel.Location = new System.Drawing.Point(1860, 111);
+            this.ranking_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ranking_panel.Location = new System.Drawing.Point(60, 111);
             this.ranking_panel.Name = "ranking_panel";
             this.ranking_panel.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
-            this.ranking_panel.Size = new System.Drawing.Size(0, 709);
+            this.ranking_panel.Size = new System.Drawing.Size(1740, 709);
             this.ranking_panel.TabIndex = 59;
             this.ranking_panel.Visible = false;
-            this.ranking_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.ranking_panel_Paint);
+            this.ranking_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.ranking_panel_Paint_1);
             // 
             // yearinp
             // 
@@ -460,7 +463,7 @@
             // textBox_Yearinp
             // 
             this.textBox_Yearinp.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox_Yearinp.Location = new System.Drawing.Point(13, 52);
+            this.textBox_Yearinp.Location = new System.Drawing.Point(95, 23);
             this.textBox_Yearinp.Name = "textBox_Yearinp";
             this.textBox_Yearinp.Size = new System.Drawing.Size(202, 26);
             this.textBox_Yearinp.TabIndex = 6;
@@ -469,7 +472,7 @@
             // 
             this.enter_Click.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enter_Click.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.enter_Click.Location = new System.Drawing.Point(13, 84);
+            this.enter_Click.Location = new System.Drawing.Point(303, 23);
             this.enter_Click.Name = "enter_Click";
             this.enter_Click.Size = new System.Drawing.Size(104, 45);
             this.enter_Click.TabIndex = 8;
@@ -479,36 +482,39 @@
             // 
             // ranking_chart
             // 
-            chartArea17.Name = "ChartArea1";
-            this.ranking_chart.ChartAreas.Add(chartArea17);
-            legend17.Name = "Legend1";
-            this.ranking_chart.Legends.Add(legend17);
-            this.ranking_chart.Location = new System.Drawing.Point(13, 135);
+            chartArea5.Name = "ChartArea1";
+            this.ranking_chart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.ranking_chart.Legends.Add(legend5);
+            this.ranking_chart.Location = new System.Drawing.Point(413, 23);
             this.ranking_chart.Name = "ranking_chart";
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series17.Legend = "Legend1";
-            series17.Name = "Postnumbers";
-            this.ranking_chart.Series.Add(series17);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Legend = "Legend1";
+            series5.Name = "Postnumbers";
+            this.ranking_chart.Series.Add(series5);
             this.ranking_chart.Size = new System.Drawing.Size(1237, 591);
             this.ranking_chart.TabIndex = 1;
             this.ranking_chart.Text = "chart1";
-            title9.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title9.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            title9.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title9.Name = "title";
-            title9.Text = "Thống kê bài đăng theo tháng";
-            this.ranking_chart.Titles.Add(title9);
+            title3.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            title3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            title3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "title";
+            title3.Text = "Thống kê bài đăng theo tháng";
+            this.ranking_chart.Titles.Add(title3);
             this.ranking_chart.Click += new System.EventHandler(this.ranking_chart_Click);
             // 
             // time_manage
             // 
+            this.time_manage.Controls.Add(this.label4);
+            this.time_manage.Controls.Add(this.label3);
+            this.time_manage.Controls.Add(this.time_ex);
             this.time_manage.Controls.Add(this.averageTime);
             this.time_manage.Controls.Add(this.time_collection);
             this.time_manage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.time_manage.Location = new System.Drawing.Point(1860, 111);
+            this.time_manage.Location = new System.Drawing.Point(60, 111);
             this.time_manage.Name = "time_manage";
-            this.time_manage.Size = new System.Drawing.Size(0, 0);
+            this.time_manage.Size = new System.Drawing.Size(1740, 709);
             this.time_manage.TabIndex = 60;
             // 
             // averageTime
@@ -523,16 +529,16 @@
             // 
             // time_collection
             // 
-            chartArea18.Name = "ChartArea1";
-            this.time_collection.ChartAreas.Add(chartArea18);
-            legend18.Name = "Legend1";
-            this.time_collection.Legends.Add(legend18);
+            chartArea6.Name = "ChartArea1";
+            this.time_collection.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.time_collection.Legends.Add(legend6);
             this.time_collection.Location = new System.Drawing.Point(573, 115);
             this.time_collection.Name = "time_collection";
-            series18.ChartArea = "ChartArea1";
-            series18.Legend = "Legend1";
-            series18.Name = "Series1";
-            this.time_collection.Series.Add(series18);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.time_collection.Series.Add(series6);
             this.time_collection.Size = new System.Drawing.Size(952, 539);
             this.time_collection.TabIndex = 0;
             this.time_collection.Text = "chart1";
@@ -551,6 +557,46 @@
             this.escape.UseVisualStyleBackColor = true;
             this.escape.Click += new System.EventHandler(this.escape_Click);
             // 
+            // time_ex
+            // 
+            this.time_ex.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.time_ex.Location = new System.Drawing.Point(873, 41);
+            this.time_ex.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.time_ex.Name = "time_ex";
+            this.time_ex.Size = new System.Drawing.Size(120, 26);
+            this.time_ex.TabIndex = 2;
+            this.time_ex.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(716, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(150, 29);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Số lần nhấn";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(25, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(427, 46);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Time Test Information\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -558,9 +604,9 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1800, 820);
-            this.Controls.Add(this.time_manage);
-            this.Controls.Add(this.ranking_panel);
             this.Controls.Add(this.menu_panel);
+            this.Controls.Add(this.ranking_panel);
+            this.Controls.Add(this.time_manage);
             this.Controls.Add(this.function);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -579,8 +625,10 @@
             this.ranking_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ranking_chart)).EndInit();
             this.time_manage.ResumeLayout(false);
+            this.time_manage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.averageTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.time_collection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.time_ex)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -625,6 +673,9 @@
         private System.Windows.Forms.DataGridView averageTime;
         private System.Windows.Forms.DataVisualization.Charting.Chart time_collection;
         private System.Windows.Forms.Button escape;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown time_ex;
+        private System.Windows.Forms.Label label4;
     }
 }
 
