@@ -271,6 +271,7 @@ namespace WinForm2
 
         private void ranking_Click(object sender, EventArgs e)
         {
+            DrawChart(posts.MonthStatistic(2023));
             time_manage.Visible = false;
             menu_panel.Visible = false;
             ranking_panel.Visible = true;
@@ -303,9 +304,6 @@ namespace WinForm2
             if (int.TryParse(textBox_Yearinp.Text, out int year))
             {
                 DrawChart(posts.MonthStatistic(2024));
-                time_manage.Visible = false;
-                menu_panel.Visible = false;
-                ranking_panel.Visible = true;
             }
             else
             {
