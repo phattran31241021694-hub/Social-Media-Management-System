@@ -54,7 +54,11 @@ namespace WinForm2
         {
             Node node = new Node(p);
             if (IsEmpty()) { Head = Tail = node; }
-            else { Tail.Next = node; Tail = node; }
+            else 
+            { 
+                Tail.Next = node;
+                Tail = node; 
+            }
         }
         public SingleLinkedList Clone()
         {

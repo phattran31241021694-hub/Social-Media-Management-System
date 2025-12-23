@@ -9,4 +9,3 @@ C:\Users\LECOO\source\repos\WinForm2\WinForm2\obj\Debug\WinForm2.csproj.CoreComp
 C:\Users\LECOO\source\repos\WinForm2\WinForm2\obj\Debug\WinForm2.exe
 C:\Users\LECOO\source\repos\WinForm2\WinForm2\obj\Debug\WinForm2.pdb
 C:\Users\LECOO\source\repos\WinForm2\WinForm2\obj\Debug\WinForm2.exe.config
-C:\Users\LECOO\source\repos\WinForm2\WinForm2\obj\Debug\WinForm2.Form2.resources
